@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedir Desculpas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="step1" class="step active">
+            <h1>Pedir Desculpas</h1>
+            <p>Vamos começar criando uma mensagem de desculpas personalizada.</p>
+            <button onclick="nextStep(2)">Começar</button>
+        </div>
+
+        <div id="step2" class="step">
+            <h2>Passo 1: Informações</h2>
+            <p>Qual é o seu nome e o nome da pessoa para quem você está pedindo desculpas?</p>
+            <input type="text" id="nome" placeholder="Seu nome">
+            <input type="text" id="nomeMulher" placeholder="Nome dela">
+            <button onclick="nextStep(3)">Próximo</button>
+        </div>
+
+        <div id="step3" class="step">
+            <h2>Passo 2: Motivo</h2>
+            <p>Qual é o motivo pelo qual você está pedindo desculpas?</p>
+            <input type="text" id="motivo" placeholder="Digite o motivo">
+            <button onclick="nextStep(4)">Próximo</button>
+        </div>
+
+        <div id="step4" class="step">
+            <h2>Passo 3: Sentimentos</h2>
+            <p>Como você se sente em relação a isso?</p>
+            <input type="text" id="sentimentos" placeholder="Descreva seus sentimentos">
+            <button onclick="showMensagem()">Gerar Mensagem</button>
+        </div>
+
+        <div id="step5" class="step">
+           <!-- Botão será adicionado dinamicamente -->
+        <div class="hearts-container"></div>
+        </div>
+
+        <div id="result" class="step">
+            <h2>Mensagem de Desculpas</h2>
+            <p id="mensagem"></p>
+            <button onclick="restart()">Recomeçar</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

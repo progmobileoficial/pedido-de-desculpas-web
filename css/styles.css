@@ -1,0 +1,98 @@
+/* Reset básico e box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do corpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4); /* Gradiente suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Estilo do container principal */
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    position: relative; /* Necessário para posicionamento dos corações */
+}
+
+/* Títulos */
+h1, h2 {
+    color: #ff6f61; /* Cor romântica */
+    font-family: 'Dancing Script', cursive; /* Fonte cursiva */
+}
+
+/* Texto */
+p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Inputs */
+input {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Botões */
+button {
+    background-color: #ff6f61; /* Cor romântica */
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #ff4f3d;
+    transform: scale(1.05);
+}
+
+/* Estilo das etapas */
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+/* Mensagem */
+#result p {
+    font-size: 1.2em;
+    color: #333;
+    white-space: pre-line;
+    position: relative;
+}
+
+/* Corações flutuantes */
+.heart {
+    position: absolute;
+    font-size: 2em;
+    color: #ff6f61;
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+}
+
+.heart:hover {
+    opacity: 1;
+}
