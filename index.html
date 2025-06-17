@@ -5,6 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedir Desculpas</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1, h2 {
+            color: #e63946;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #e63946;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        button:hover {
+            background-color: #d62828;
+        }
+
+        .hearts-container {
+            margin-top: 20px;
+            font-size: 2em;
+            animation: hearts 1s infinite alternate;
+        }
+
+        @keyframes hearts {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -17,28 +97,27 @@
         <div id="step2" class="step">
             <h2>Passo 1: Informações</h2>
             <p>Qual é o seu nome e o nome da pessoa para quem você está pedindo desculpas?</p>
-            <input type="text" id="nome" placeholder="Seu nome">
-            <input type="text" id="nomeMulher" placeholder="Nome dela">
+            <input type="text" id="nome" placeholder="Seu nome" value="Leonardo">
+            <input type="text" id="nomeMulher" placeholder="Nome dela" value="Mariana">
             <button onclick="nextStep(3)">Próximo</button>
         </div>
 
         <div id="step3" class="step">
             <h2>Passo 2: Motivo</h2>
             <p>Qual é o motivo pelo qual você está pedindo desculpas?</p>
-            <input type="text" id="motivo" placeholder="Digite o motivo">
+            <input type="text" id="motivo" placeholder="Digite o motivo" value="Estou triste porque discutimos e não quero que isso nos afaste.">
             <button onclick="nextStep(4)">Próximo</button>
         </div>
 
         <div id="step4" class="step">
             <h2>Passo 3: Sentimentos</h2>
             <p>Como você se sente em relação a isso?</p>
-            <input type="text" id="sentimentos" placeholder="Descreva seus sentimentos">
+            <input type="text" id="sentimentos" placeholder="Descreva seus sentimentos" value="Me sinto culpado e com saudades dos nossos momentos felizes.">
             <button onclick="showMensagem()">Gerar Mensagem</button>
         </div>
 
         <div id="step5" class="step">
-           <!-- Botão será adicionado dinamicamente -->
-        <div class="hearts-container"></div>
+            <div class="hearts-container">❤️❤️❤️</div>
         </div>
 
         <div id="result" class="step">
@@ -48,6 +127,39 @@
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script>
+        let currentStep = 1;
+
+        function nextStep(step) {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            currentStep = step;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+        }
+
+        function showMensagem() {
+            const nome = document.getElementById('nome').value;
+            const nomeMulher = document.getElementById('nomeMulher').value;
+            const motivo = document.getElementById('motivo').value;
+            const sentimentos = document.getElementById('sentimentos').value;
+
+            const mensagem = `
+                <strong>Querida ${nomeMulher},</strong><br><br>
+                Eu, ${nome}, venho por meio desta mensagem expressar o quanto lamento pelo ocorrido. ${motivo} <br><br>
+                Me sinto profundamente triste e arrependido. ${sentimentos} <br><br>
+                Por favor, aceite minhas sinceras desculpas. Te amo muito!<br><br>
+                Com carinho,<br>
+                ${nome}
+            `;
+
+            document.getElementById('mensagem').innerHTML = mensagem;
+            nextStep(5);
+        }
+
+        function restart() {
+            currentStep = 1;
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step1').classList.add('active');
+        }
+    </script>
 </body>
 </html>
